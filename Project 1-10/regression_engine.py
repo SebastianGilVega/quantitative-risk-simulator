@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from get_data import get_stock_data
 import statsmodels.api as sm
-from plotting import plot_regression
+from plotting import plot_regression 
 
 
 def regression_engine(ticker, df):
@@ -33,13 +33,14 @@ def regression_engine(ticker, df):
     alpha = results.params.iloc[0]
     beta = results.params.iloc[1]
 
-    # Print friendly summary
+    # Print summary
     print(f"\n--- Regression Results for {ticker} ---")
     print(f"Beta (Market Risk): {beta:.4f}")
     print(f"Alpha (Excess Return): {alpha:.6f}")
     print(f"R-squared: {results.rsquared:.4f}")
 
     plot_regression(ticker, merged_df["Log Return_mkt"], Y, results)
+
 
 
     return alpha, beta
